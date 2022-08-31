@@ -31,13 +31,13 @@
         <tbody>
           @foreach($tasks as $task)
             <tr>
-                <td>{{$task->taskId}}</td>
+                <td>{{$task->id}}</td>
                 <td>{{$task->taskName}}</td>
                 <td>{{$task->taskPrice}}</td>
             
                 <td>
-                  <form method="POST" action="{{ route('tasks.destroy',$task->taskId) }}">
-                  @csrf
+                  <form method="POST" action="{{ route('tasks.destroy',$task->id) }}">
+                    {{ csrf_field() }}
                   @method('delete')
                   <input type="hidden" name="_method" value="delete">
                   <button type="submit" class="btn btn-danger btn-icon">
