@@ -22,10 +22,10 @@
    
         <thead>
           <tr>
-            <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
+            <th scope="col">id</th>
+            <th scope="col">taskName</th>
+            <th scope="col">Price</th>
+            <th scope="col">delete</th>
           </tr>
         </thead>
         <tbody>
@@ -34,7 +34,6 @@
                 <td>{{$task->id}}</td>
                 <td>{{$task->taskName}}</td>
                 <td>{{$task->taskPrice}}</td>
-            
                 <td>
                   <form method="POST" action="{{ route('tasks.destroy',$task->id) }}">
                     {{ csrf_field() }}

@@ -80,9 +80,10 @@ class TasksController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($taskId)
+    public function destroy($id)
     {
-        tasks::find($taskId);
+        tasks::destroy($id);
+        return redirect('tasks');;
         
     }
 }
