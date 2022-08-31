@@ -35,10 +35,15 @@
                 <td>{{$task->taskName}}</td>
                 <td>{{$task->taskPrice}}</td>
             
-                <td><button class="btn btn-danger">
-                  {{ csrf_field() }}
-                  @method('DELETE')
-                  <a href="{{ route('tasks.destroy', $task->taskId) }}">Delete</button></td>
+                <td>
+                  <form method="POST" action="{{ route('tasks.destroy',$task->taskId) }}">
+                  @csrf
+                  @method('delete')
+                  <input type="hidden" name="_method" value="delete">
+                  <button type="submit" class="btn btn-danger btn-icon">
+                    <i data-feather="delete"></i>
+                  </button>
+                </form></td>
             </tr>
             @endforeach
         </tbody>

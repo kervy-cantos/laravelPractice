@@ -37,7 +37,7 @@ class TasksController extends Controller
     {
         $storeData = $request->all();
         $tasks = tasks::create($storeData);
-        return redirect('/tasks');
+        return redirect('tasks');
     }
 
     /**
@@ -83,6 +83,6 @@ class TasksController extends Controller
     public function destroy($id)
     {
         tasks::destroy($id);
-        return redirect('/tasks');
+        return view('tasks');
     }
 }
