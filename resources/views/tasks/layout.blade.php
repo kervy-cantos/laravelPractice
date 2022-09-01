@@ -11,42 +11,10 @@
     </style>
     <title>New Laravel Document</title>
 </head>
-<body class="container">
-
-    <form action="/tasks" class="mt-3" method="POST">
-      {{ csrf_field() }}
-        <label for="taskID">Add Task</label>
-        <input class="form-control mb-3" type="text" id="taskName" name="taskName"/>
-    </form>
-    <table class="table table-bordered table-striped">
-   
-        <thead>
-          <tr>
-            <th scope="col">id</th>
-            <th scope="col">taskName</th>
-            <th scope="col">Price</th>
-            <th scope="col">delete</th>
-          </tr>
-        </thead>
-        <tbody>
-          @foreach($tasks as $task)
-            <tr>
-                <td>{{$task->id}}</td>
-                <td>{{$task->taskName}}</td>
-                <td>{{$task->taskPrice}}</td>
-                <td>
-                  <form method="POST" action="{{ route('tasks.destroy',$task->id) }}">
-                    {{ csrf_field() }}
-                  @method('delete')
-                  <input type="hidden" name="_method" value="delete">
-                  <button type="submit" class="btn btn-danger btn-icon">
-                    <i data-feather="delete"></i>
-                  </button>
-                </form></td>
-            </tr>
-            @endforeach
-        </tbody>
-      </table>
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<body>
+    <div class="container">
+        @yield('content')
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>

@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\tasks;
-class TasksController extends Controller
+use App\Models\workers;
+class WorkersController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,8 +13,7 @@ class TasksController extends Controller
      */
     public function index()
     {
-        $tasks = tasks::all();
-        return view('tasks.index', compact('tasks'));
+        //
     }
 
     /**
@@ -24,7 +23,7 @@ class TasksController extends Controller
      */
     public function create()
     {
-        return view('tasks');
+        //
     }
 
     /**
@@ -34,12 +33,12 @@ class TasksController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {   
-        if ($request->has('taskName')){
-        $storeData = $request->all();
-        $tasks = tasks::create($storeData);
-        return redirect('tasks');
-        }
+    {
+            if ($request->has('form2')){
+            $storeData = $request->all();
+            $workers = workers::create($storeData);
+            return redirect('tasks');
+            }
     }
 
     /**
@@ -84,8 +83,6 @@ class TasksController extends Controller
      */
     public function destroy($id)
     {
-        tasks::destroy($id);
-        return redirect('tasks');;
-        
+        //
     }
 }

@@ -18,4 +18,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('tasks', TasksController::class);
+Route::resource('/tasks', TasksController::class);
