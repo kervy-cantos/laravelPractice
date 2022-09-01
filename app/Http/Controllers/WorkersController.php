@@ -34,11 +34,7 @@ class WorkersController extends Controller
      */
     public function store(Request $request)
     {
-            if ($request->has('form2')){
-            $storeData = $request->all();
-            $workers = workers::create($storeData);
-            return view('tasks');
-            }
+        
     }
 
     /**

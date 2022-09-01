@@ -48,9 +48,9 @@
                             <label for="workerName">Name</label>
                             <input type="text" name="workerName" class="form-control"/>
                             <label for="workerRate">Rate</label>
-                            <input type="text" name="workerRate"  class="form-control"/>
+                            <input type="text" name="workRate"  class="form-control"/>
                             <label for="workerTotal">Work Hours</label>
-                            <input type="text" name="workerTotal"  class="form-control"/>
+                            <input type="text" name="workTotal"  class="form-control"/>
                             <input type="hidden" name="task_id" value="{{$task->id}}" />
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                             <button type="submit" name="form2" class="btn btn-primary">Save changes</button>

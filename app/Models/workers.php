@@ -9,7 +9,7 @@ class workers extends Model
 {
     public $timestamps = false;
     use HasFactory;
-    protected $fillable = ["workerName", "workerRate","workHours", "workerTotal"];
+    protected $fillable = ["task_id","workerName", "workerRate","workHours", "workerTotal"];
 
     public function tasks(){    
         return $this->belongsTo(tasks::class);
