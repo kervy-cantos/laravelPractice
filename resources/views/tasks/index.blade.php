@@ -42,14 +42,16 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                       </div>
                       <div class="modal-body">
-                          <form method="POST" action ="">
+                          <form method="POST" action="">
                             {{ csrf_field() }}
+                            @method('post')
                             <label for="workerName">Name</label>
-                            <input type="text" id="workerName" class="form-control"/>
+                            <input type="text" name="workerName" class="form-control"/>
                             <label for="workerRate">Rate</label>
-                            <input type="text" id="workerRate"  class="form-control"/>
+                            <input type="text" name="workerRate"  class="form-control"/>
                             <label for="workerTotal">Work Hours</label>
-                            <input type="text" id="workerTotal"  class="form-control"/>
+                            <input type="text" name="workerTotal"  class="form-control"/>
+                            <input type="hidden" name="task_id" value="{{$task->id}}" />
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                             <button type="submit" name="form2" class="btn btn-primary">Save changes</button>
                           </form>

@@ -15,7 +15,8 @@ return new class extends Migration
     {
         Schema::create('workers', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->foreignId('task_id')->constrained('tasks');
+            $table->unsignedBigInteger('task_id');
+            $table->foreign('task_id')->references('id')->on('tasks');
             $table->string('workerName');
             $table->float('workHours')->default('0');
             $table->float('workRate')->default('0');
