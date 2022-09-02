@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\workers;
+use App\Models\tasks;
 class WorkersController extends Controller
 {
     /**
@@ -13,7 +14,8 @@ class WorkersController extends Controller
      */
     public function index()
     {
-        //
+        $workers = workers::all();
+       
     }
 
     /**
@@ -35,6 +37,11 @@ class WorkersController extends Controller
     public function store(Request $request)
     {
         
+        $total = $request->workRate * $request->workHours;
+        $storeData = $request->all();
+        $storeData['workersTotal'] = $total;
+        $workers = workers::create($storeData);
+        return redirect('tasks');
     }
 
     /**
@@ -43,9 +50,9 @@ class WorkersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function find($id)
     {
-        //
+       
     }
 
     /**
@@ -79,6 +86,7 @@ class WorkersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        workers::destroy($id);
+        return redirect('tasks');
     }
 }

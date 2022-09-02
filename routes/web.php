@@ -1,7 +1,8 @@
 <?php
-
+namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TasksController;
+use App\Http\Controllers\WorkersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,3 +20,5 @@ Route::get('/', function () {
 });
 
 Route::resource('/tasks', TasksController::class);
+Route::post('/addWorker','App\Http\Controllers\WorkersController@store');
+Route::get('/deleteWorker/{id}','App\Http\Controllers\WorkersController@destroy');

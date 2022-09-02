@@ -41,11 +41,7 @@ class TasksController extends Controller
         $tasks = tasks::create($storeData);
         return redirect('tasks');
         }
-        if ($request->has('form2')){
-            $storeData = $request->all();
-            $workers = workers::create($storeData);
-            return view('tasks');
-            }
+      
     }
 
     /**
