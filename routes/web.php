@@ -20,5 +20,9 @@ Route::get('/', function () {
 });
 
 Route::resource('/tasks', TasksController::class);
+// Labor Routes//
 Route::post('/addWorker','App\Http\Controllers\WorkersController@store');
-Route::get('/deleteWorker/{id}','App\Http\Controllers\WorkersController@destroy');
+Route::delete('/deleteWorker/{id}','App\Http\Controllers\WorkersController@destroy');
+// Parts Routes//
+Route::post('/addPart','App\Http\Controllers\PartsController@store');
+Route::delete('/deletePart/{id}','App\Http\Controllers\PartsController@destroy');

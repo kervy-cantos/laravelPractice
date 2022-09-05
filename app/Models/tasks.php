@@ -15,5 +15,8 @@ class tasks extends Model
     public function workers(){
         return $this->hasMany(workers::class);
     }
+    public function parts(){
+        return $this->hasMany(parts::class);
+    }
 }
 

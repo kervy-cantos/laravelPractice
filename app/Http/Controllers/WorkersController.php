@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\DB;
 
 use Illuminate\Http\Request;
 use App\Models\workers;
@@ -41,6 +42,8 @@ class WorkersController extends Controller
         $storeData = $request->all();
         $storeData['workersTotal'] = $total;
         $workers = workers::create($storeData);
+        $sum = DB::table('workers')->where('tasks_id' ,'=',$request->tasks_id)->sum('workersTotal');
+        DB::table('tasks')->where('id', '=', $request->tasks_id)->update(['laborTotal' => $sum]);
         return redirect('tasks');
     }
 

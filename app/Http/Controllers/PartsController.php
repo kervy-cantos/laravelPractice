@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
-use App\Models\tasks;
-use App\Models\workers;
 use App\Models\parts;
-class TasksController extends Controller
+class PartsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,13 +13,7 @@ class TasksController extends Controller
      */
     public function index()
     {
-        $tasks = tasks::all();
-         foreach($tasks as $task) {
-        $partsTotal = DB::table('parts')->where('tasks_id' ,'=', $task->id)->sum('partsTotal');
-        $workersTotal = DB::table('workers')->where('tasks_id' ,'=', $task->id)->sum('workersTotal');
-        DB::table('tasks')->where('id', '=', $task->id)->update(['laborTotal'=> $workersTotal, 'partsTotal'=>$partsTotal]);
-        }
-        return view('tasks.index', compact('tasks'));
+        //
     }
 
     /**
@@ -31,7 +23,7 @@ class TasksController extends Controller
      */
     public function create()
     {
-        return view('tasks');
+        //
     }
 
     /**
@@ -41,13 +33,17 @@ class TasksController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {   
-        if ($request->has('taskName')){
+    {
+        $total = $request->partPrice * $request->partQty;
+     
         $storeData = $request->all();
-        $tasks = tasks::create($storeData);
+        $storeData['partsTotal'] = $total;
+        $workers = parts::create($storeData);
+
+        $sum = DB::table('parts')->where('tasks_id' ,'=',$request->tasks_id)->sum('partsTotal');
+        DB::table('tasks')->where('id', '=', $request->tasks_id)->update(['partsTotal' => $sum]);
+        
         return redirect('tasks');
-        }
-      
     }
 
     /**
@@ -92,8 +88,7 @@ class TasksController extends Controller
      */
     public function destroy($id)
     {
-        tasks::destroy($id);
+        parts::destroy($id);
         return redirect('tasks');
-        
     }
 }
