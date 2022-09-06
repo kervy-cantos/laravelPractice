@@ -21,6 +21,9 @@
       </tr>
     </thead>
     <tbody class="text-center">
+      @php
+        $grandtotal = 0;    
+      @endphp
       @foreach($tasks as $task)
       <tr>
         <td style="overflow: hidden;">{{$task->taskName}}<table class="table ms-2 mt-5 intable">
@@ -173,9 +176,9 @@
         @endif
         <td>{{$task->partsTotal}}</td>
         @php
-            $grandTotal = $task->partsTotal + $task->laborTotal
+            $subtotal = $task->partsTotal + $task->laborTotal
         @endphp
-        <td>{{$grandTotal}}</td>
+        <td>{{$subtotal}}</td>
         <td>
           <form method="POST" action="{{ route('tasks.destroy',$task->id) }}">
             {{ csrf_field() }}
@@ -187,7 +190,9 @@
           </form>
         </td>
       </tr>
-     
+      @php
+          $grandtotal = $grandtotal  + $subtotal
+      @endphp
       @endforeach
     </tbody>
   </table>
@@ -201,6 +206,6 @@
   <h6>Taxes : &#8369; 0.00</h6>
   <h6>Additional Fees : &#8369; 0.00</h6>
   <h4>Subtotal : &#8369; 0.00</h4>
-  <h2>Total : &#8369; {{}}</h2>
+  <h2>Total : &#8369; {{$grandtotal}}</h2>
 </footer>
 @endsection
