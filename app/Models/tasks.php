@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+
 class tasks extends Model
 {   
     public $timestamps = false;
@@ -18,5 +19,9 @@ class tasks extends Model
     public function parts(){
         return $this->hasMany(parts::class);
     }
+    public function issues(){
+        return $this->hasMany(issues::class);
+    }
+
 }
 

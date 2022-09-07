@@ -26,3 +26,6 @@ Route::delete('/deleteWorker/{id}','App\Http\Controllers\WorkersController@destr
 // Parts Routes//
 Route::post('/addPart','App\Http\Controllers\PartsController@store');
 Route::delete('/deletePart/{id}','App\Http\Controllers\PartsController@destroy');
+// Issues Routes
+Route::post('/addIssue','App\Http\Controllers\IssuesController@store');
+Route::delete('/deleteIssue/{id}','App\Http\Controllers\IssuesControllerr@destroy');
